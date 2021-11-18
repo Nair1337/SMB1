@@ -13,5 +13,5 @@ interface ShoppingListDao {
     fun addProduct(shoppinglist: Product)
 
     @Query("SELECT * FROM ShoppingList_table ORDER BY id_of_product ASC")
-    fun readAllData(): LiveData<ArrayList<Product>>
+    fun readAllData(): LiveData<List<Product>>
 }

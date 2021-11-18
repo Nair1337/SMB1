@@ -36,7 +36,7 @@ class ProductListActivity : AppCompatActivity() {
         val database = ShoppingListDatabase.getDatabase(this)
         //wyciagam z bazy danyc hwszystko co jest zapisane i obserwujemy zmiany to odczyta do nowa
         database.shoppinglistDao().readAllData().observe(this, {
-            productAdapter.setData(it)
+            productAdapter.setData(ArrayList(it))
         })
 
     }
