@@ -2,6 +2,7 @@ package com.example.shoppinglist.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "ShoppingList_table")
 data class Product(
@@ -11,4 +12,4 @@ data class Product(
     val if_bought: Boolean = false,
     @PrimaryKey(autoGenerate = true)
     val id_of_product: Int = 0
-)
+):Serializable

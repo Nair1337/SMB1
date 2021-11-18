@@ -1,5 +1,6 @@
 package com.example.shoppinglist
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.data.Product
 
-class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
+class ProductListAdapter(
+    private val onDeleteProduct: (Int) -> Unit
+) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     private var data = ArrayList<Product>()
 
@@ -27,12 +30,17 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>()
         private val ilosc = view.findViewById<TextView>(R.id.Ilosc)
         private val bt_del = view.findViewById<ImageView>(R.id.Delete)
 
-        fun bind(product: Product) {
+        fun bind(product: Product, onDeleteProduct: (Int) -> Unit) {
             name.text = product.name_of_product
             price.text = product.price_of_product.toString()
             ilosc.text = product.how_many_products.toString()
             bt_del.setOnClickListener {
-
+                onDeleteProduct(product.id_of_product)
+            }
+            itemView.setOnClickListener{
+                val intent = Intent(itemView.context, UpdateProductActivity::class.java)
+                intent.putExtra(UpdateProductActivity.KEY, product)
+                itemView.context.startActivity(intent)
             }
         }
     }
@@ -43,7 +51,10 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position]){
+            onDeleteProduct(it)
+            notifyItemRemoved(position)
+        }
     }
 
     override fun getItemCount(): Int = data.size

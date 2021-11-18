@@ -10,26 +10,41 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class AddProductActivity : AppCompatActivity() {
+class UpdateProductActivity : AppCompatActivity() {
+
+    companion object {
+        const val KEY = "byleco"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_product)
+        setContentView(R.layout.activity_update_product)
+
+        val product = intent.getSerializableExtra(KEY) as? Product
+
+        if (product  == null){
+            finish()
+        }
 
         val name = findViewById<EditText>(R.id.Name)
         val ilosc = findViewById<EditText>(R.id.Ilosc)
         val cena = findViewById<EditText>(R.id.Cena)
         val dodaj = findViewById<Button>(R.id.bt_add)
 
+        name.setText(product!!.name_of_product)
+        ilosc.setText(product!!.how_many_products)
+        cena.setText(product!!.price_of_product.toString())
+
         val database = ShoppingListDatabase.getDatabase(this)
 
         dodaj.setOnClickListener {
-            val product = Product(
-                name.text.toString(),
-                cena.text.toString().toFloat(),
-                ilosc.text.toString().toInt()
-            )
             GlobalScope.launch(Dispatchers.Default) {
-                database.shoppinglistDao().addProduct(product)
+                database.shoppinglistDao().updateById(
+                    name.text.toString(),
+                    cena.text.toString().toFloat(),
+                    ilosc.text.toString().toInt(),
+                    product.id_of_product
+                )
             }
             onBackPressed()
         }
