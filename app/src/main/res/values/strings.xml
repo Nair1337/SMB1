@@ -1,11 +1,18 @@
 <resources>
-    <string name="app_name">Shopping List</string>
-    <string name="shopping_list">Shopping List</string>
+    <string name="app_name" translatable="false">Shopping List</string>
+    <string name="shopping_list" translatable="false">Shopping List</string>
     <string name="options">Options</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="nazwa_produktu">Nazwa produktu</string>
-    <string name="cena">Cena</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="nazwa_produktu">Name of a product</string>
+    <string name="cena">Price</string>
     <string name="ilosc">Ilosc</string>
     <string name="dodaj">Dodaj</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="save">Zapisz</string>
+
+    <string-array name="languages">
+        <item>English</item>
+        <item>Polski</item>
+    </string-array>
 </resources>

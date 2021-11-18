@@ -32,9 +32,21 @@
         android:layout_margin="18dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/czyKupione"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="PlaceHolder" />
+
+    <TextView
+        android:id="@+id/czyKupione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Delete"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="PlaceHolder" />
+
     <ImageView
         android:id="@+id/Delete"
         android:layout_width="wrap_content"

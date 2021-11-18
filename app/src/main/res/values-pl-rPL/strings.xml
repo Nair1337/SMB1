@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shopping List</string>
+    <string name="options">Opcje</string>
+    <string name="nazwa_produktu">Nazwa produktu</string>
+    <string name="cena">Cena</string>
+    <string name="ilosc">Ilość</string>
+    <string name="dodaj">Dodaj</string>
+    <string name="dark_mode">Tryb nocny</string>
+    <string name="save">Zapisz</string>
+</resources>

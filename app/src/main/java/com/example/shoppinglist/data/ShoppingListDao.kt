@@ -18,7 +18,7 @@ interface ShoppingListDao {
     @Query("DELETE FROM ShoppingList_table WHERE id_of_product LIKE :id")
     fun deleteById(id: Int)
 
-    @Query("UPDATE ShoppingList_table SET name_of_product = :name, price_of_product = :price, how_many_products = :kant WHERE id_of_product LIKE :id")
-    fun updateById(name: String, price: Float, kant: Int, id: Int)
+    @Query("UPDATE ShoppingList_table SET name_of_product = :name, price_of_product = :price, how_many_products = :kant, if_bought = :kupione WHERE id_of_product LIKE :id")
+    fun updateById(name: String, price: Float, kant: Int, kupione: Boolean, id: Int)
 }
 

@@ -2,10 +2,9 @@ package com.example.shoppinglist
 
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 
 open class MainActivity : AppCompatActivity() {
@@ -13,12 +12,22 @@ open class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (AppManager.isDarkMode(this)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
 
-            bt_1.setOnClickListener {
-                Intent(this, ProductListActivity::class.java).also {
-                    startActivity(it)
-                }
+        bt_1.setOnClickListener {
+            Intent(this, ProductListActivity::class.java).also {
+                startActivity(it)
             }
+        }
+        bt_2.setOnClickListener {
+            Intent(this, OptionsActivity::class.java).also {
+                startActivity(it)
+            }
+        }
     }
 }

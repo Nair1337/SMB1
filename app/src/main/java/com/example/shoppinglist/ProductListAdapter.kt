@@ -29,15 +29,23 @@ class ProductListAdapter(
         private val price = view.findViewById<TextView>(R.id.Cena)
         private val ilosc = view.findViewById<TextView>(R.id.Ilosc)
         private val bt_del = view.findViewById<ImageView>(R.id.Delete)
+        private val kupione = view.findViewById<TextView>(R.id.czyKupione)
 
         fun bind(product: Product, onDeleteProduct: (Int) -> Unit) {
             name.text = product.name_of_product
             price.text = product.price_of_product.toString()
             ilosc.text = product.how_many_products.toString()
+
+            if (product.if_bought) {
+                kupione.text = "Kupione"
+            } else {
+                kupione.text = "Nie kupione"
+            }
+
             bt_del.setOnClickListener {
                 onDeleteProduct(product.id_of_product)
             }
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 val intent = Intent(itemView.context, UpdateProductActivity::class.java)
                 intent.putExtra(UpdateProductActivity.KEY, product)
                 itemView.context.startActivity(intent)
@@ -51,7 +59,7 @@ class ProductListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position]){
+        holder.bind(data[position]) {
             onDeleteProduct(it)
             notifyItemRemoved(position)
         }

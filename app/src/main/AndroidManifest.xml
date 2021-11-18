@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingList">
         <activity
+            android:name=".OptionsActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateProductActivity"
             android:exported="false" />
         <activity
