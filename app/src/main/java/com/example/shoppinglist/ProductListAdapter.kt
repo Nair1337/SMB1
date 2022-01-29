@@ -9,9 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.data.Product
 
-class ProductListAdapter(
-    private val onDeleteProduct: (Int) -> Unit
-) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
+class ProductListAdapter(private val onDeleteProduct: (Int) -> Unit) :
+    RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     private var data = ArrayList<Product>()
 
